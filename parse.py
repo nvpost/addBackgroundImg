@@ -7,7 +7,11 @@ from io import BytesIO
 root = ET.parse('yml_feed.xml').getroot()
 
 сounter = 0
+elements = len(root.find('shop/offers'))
 for i in root.find('shop/offers'):
+    # if(сounter<limit)
+    сounter = сounter + 1
+
     src = i.find('picture').text
 
 
@@ -24,6 +28,9 @@ for i in root.find('shop/offers'):
     new_img = img = Image.alpha_composite(overlay, img)
 
     new_img.save('imgs/'+filename[-1])
-    сounter = сounter +1
-    if сounter > 1:
-        break
+
+
+
+    print(filename, сounter, '/', elements)
+    # if сounter > 1:
+    #     break
